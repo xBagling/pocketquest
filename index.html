@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Pocket Quest · a cozy daily quiz walk</title>
+    <meta name="description" content="A free daily quiz walk through a magical wood. Every creature asks you to name something, and the rarer your answer, the more gold it's worth. Six glades, three hearts, one lantern. Everyone gets the same walk." />
+    <link rel="canonical" href="https://xbagling.github.io/pocketquest/" />
+    <meta name="theme-color" content="#06121a" />
+    <meta name="color-scheme" content="dark" />
+    <!-- Static hosts can't send headers, so the security policy is set here too (server.js sends it as a header). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pocket Quest" />
+    <meta property="og:title" content="Pocket Quest · a cozy daily quiz walk" />
+    <meta property="og:description" content="Rarer answers, bigger hoard. Six glades, three hearts, one lantern. Can you take Old Ember's hoard?" />
+    <meta property="og:url" content="https://xbagling.github.io/pocketquest/" />
+    <meta property="og:image" content="https://xbagling.github.io/pocketquest/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pocket Quest: a round glowing door in a mossy hill beneath a great tree at night, lanterns in its branches" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Pocket Quest",
+        "url": "https://xbagling.github.io/pocketquest/",
+        "image": "https://xbagling.github.io/pocketquest/og-image.png",
+        "description": "A free daily quiz walk: name things, and the rarer your answer, the more gold it's worth. Six glades, three hearts, one lantern.",
+        "genre": ["Trivia", "Puzzle", "Roguelike"],
+        "gamePlatform": "Web browser",
+        "applicationCategory": "Game",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="modulepreload" href="js/bots.js" />
+    <link rel="modulepreload" href="js/codec.js" />
+    <link rel="modulepreload" href="js/config.js" />
+    <link rel="modulepreload" href="js/content.js" />
+    <link rel="modulepreload" href="js/data/lists.js" />
+    <link rel="modulepreload" href="js/data/prompts.js" />
+    <link rel="modulepreload" href="js/data/schedule.js" />
+    <link rel="modulepreload" href="js/dungeon.js" />
+    <link rel="modulepreload" href="js/engine.js" />
+    <link rel="modulepreload" href="js/forest/art-data.js" />
+    <link rel="modulepreload" href="js/forest/fork-art.js" />
+    <link rel="modulepreload" href="js/forest/fork-scene.js" />
+    <link rel="modulepreload" href="js/forest/map-art.js" />
+    <link rel="modulepreload" href="js/forest/map-scene.js" />
+    <link rel="modulepreload" href="js/forest/particles.js" />
+    <link rel="modulepreload" href="js/forest/scene.js" />
+    <link rel="modulepreload" href="js/forest/title-art.js" />
+    <link rel="modulepreload" href="js/forest/title-scene.js" />
+    <link rel="modulepreload" href="js/forest/ui.js" />
+    <link rel="modulepreload" href="js/fx.js" />
+    <link rel="modulepreload" href="js/match.js" />
+    <link rel="modulepreload" href="js/quips.js" />
+    <link rel="modulepreload" href="js/rules.js" />
+    <link rel="modulepreload" href="js/sfx.js" />
+    <link rel="modulepreload" href="js/share.js" />
+    <link rel="modulepreload" href="js/stats.js" />
+    <link rel="modulepreload" href="js/store.js" />
+    <link rel="modulepreload" href="js/util.js" />
+    <link rel="modulepreload" href="js/views/admin.js" />
+    <link rel="modulepreload" href="js/views/archive.js" />
+    <link rel="modulepreload" href="js/views/camp.js" />
+    <link rel="modulepreload" href="js/views/delve.js" />
+    <link rel="modulepreload" href="js/views/gate.js" />
+    <link rel="modulepreload" href="js/views/ledger.js" />
+    <link rel="modulepreload" href="js/views/modals.js" />
+    <link rel="stylesheet" href="css/scene.css" />
+    <link rel="stylesheet" href="css/canopy.css" />
+    <link rel="modulepreload" href="js/forest/art-data.js" />
+    <link rel="modulepreload" href="js/data/lists.js" />
+    <link rel="modulepreload" href="js/data/prompts.js" />
+    <link rel="modulepreload" href="js/data/schedule.js" />
+  </head>
+  <body data-view="title">
+    <header class="topbar">
+      <a class="round-btn" href="#/" data-nav="home" aria-label="Back to the start" title="Back to the start"></a>
+      <a class="brand" href="#/">Pocket Quest</a>
+      <button class="round-btn" type="button" data-action="sfx" aria-label="Sound" title="Sound"></button>
+    </header>
+    <main class="view" id="view" aria-live="polite">
+      <noscript>
+        <div class="noscript">
+          <h1>Pocket Quest</h1>
+          <p>A free daily quiz walk through a magical wood. Every creature you meet asks you to name something (a country in Africa, a Greek god, a Pixar film), and the rarer your correct answer, the more gold it's worth. Six glades, three hearts, one lantern. Everyone gets the same walk each day.</p>
+          <p>Pocket Quest needs JavaScript to play. Please turn it on and reload the page.</p>
+        </div>
+      </noscript>
+    </main>
+    <div class="modal-root" id="modal-root"></div>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,675 @@
+/* Pocket Quest · Canopy.
+   The UI chrome, restyled: frosted glass cards that let the forest show through, rounded pill
+   buttons, Inter for reading and Fraunces for names and numbers. Leaves appear only where your eye
+   should go: the main button, the glade you are in, the path you picked and the lantern's vine.
+   This file sits on top of style.css and only changes how things look, never the layout logic. */
+
+:root {
+  --serif: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --caps: Fraunces, Georgia, serif;
+  --nums: Fraunces, Georgia, serif;
+  --glass: rgba(18, 30, 32, 0.46);
+  --glass-hi: rgba(255, 255, 255, 0.1);
+  --glass-edge: rgba(255, 255, 255, 0.2);
+  --frost: blur(18px) saturate(150%);
+  --leaf-a: #a8e38f;
+  --leaf-b: #5fae52;
+  --leaf-lip: #3a7a34;
+  --leaf-ink: #10231a;
+  --leaf-glow: rgba(143, 214, 122, 0.55);
+  --leafcut: 28px 8px 28px 8px;
+  --rule: rgba(255, 255, 255, 0.18);
+  --ink: #f2f6f3;
+  --soft: rgba(242, 246, 243, 0.8);
+  --muted: rgba(242, 246, 243, 0.66);
+  --dim: rgba(242, 246, 243, 0.5);
+  --mint-ink: #c9f2b8;
+}
+body {
+  background: radial-gradient(120% 60% at 50% 0%, #102226 0%, var(--night) 60%) fixed, var(--night);
+  letter-spacing: -0.005em;
+}
+
+/* ---------- Type ---------- */
+.cap {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  color: rgba(242, 246, 243, 0.7);
+}
+.ttl {
+  font-family: var(--caps);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.num {
+  font-family: var(--nums);
+  font-style: normal;
+  font-weight: 700;
+}
+.it {
+  font-style: normal;
+  color: var(--muted);
+}
+.glowtxt {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+.divider span {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35));
+}
+.divider span:last-child {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), transparent);
+}
+
+/* ---------- Panels: frosted glass ---------- */
+.box {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  border-radius: 22px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+.bar {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  border-radius: 22px;
+}
+.rule {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Buttons: pills, and one leaf-tipped main button ---------- */
+.btn {
+  min-height: 54px;
+  border-radius: var(--leafcut);
+  border: 0;
+  background: linear-gradient(180deg, var(--leaf-a), var(--leaf-b));
+  box-shadow: inset 0 -4px 0 var(--leaf-lip), inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 8px 18px rgba(0, 0, 0, 0.3);
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: 17px;
+  color: var(--leaf-ink);
+}
+.btn::before,
+.btn::after {
+  display: none;
+}
+.btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: inset 0 -2px 0 var(--leaf-lip), inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.btn.ghost {
+  border-radius: 999px;
+  background: var(--glass-hi);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  box-shadow: none;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+.btn.small {
+  min-height: 42px;
+  font-size: 14px;
+}
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    background: linear-gradient(180deg, #b8ec9f, #6cbb5e);
+    box-shadow: inset 0 -4px 0 var(--leaf-lip), inset 0 2px 0 rgba(255, 255, 255, 0.4), 0 10px 22px rgba(0, 0, 0, 0.32), 0 0 18px var(--leaf-glow);
+  }
+  .btn.ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+  }
+}
+.link-btn {
+  color: var(--leaf-a);
+}
+:focus-visible {
+  outline-color: var(--leaf-a);
+}
+
+/* Icon buttons: glass tiles. */
+.ico .c {
+  border-radius: 16px;
+  background: var(--glass-hi);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  box-shadow: none;
+}
+.ico .cap {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--soft);
+}
+@media (hover: hover) {
+  .ico:hover .c {
+    box-shadow: 0 0 14px var(--leaf-glow);
+  }
+}
+.round-btn {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  color: var(--ink);
+}
+
+/* ---------- Chips and portraits ---------- */
+.chip {
+  border-radius: 999px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass-hi);
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 500;
+  padding: 3px 11px;
+}
+.chip.gold {
+  border-color: rgba(255, 214, 120, 0.4);
+  background: rgba(255, 214, 120, 0.16);
+  color: #ffe2a0;
+}
+.chip.bad {
+  border-color: rgba(255, 154, 138, 0.4);
+  background: rgba(255, 110, 90, 0.16);
+}
+/* Diamonds become soft squares; the one you are at grows a leaf cut and a green glow. */
+.dia {
+  transform: none;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+.dia img {
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+.dia > span {
+  transform: none;
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--dim);
+}
+.dia.done {
+  opacity: 0.6;
+  filter: saturate(0.5);
+}
+.dia.now {
+  border-radius: 12px 3px 12px 3px;
+  border-color: var(--leaf-a);
+  background: rgba(168, 227, 143, 0.25);
+  box-shadow: 0 0 12px var(--leaf-glow);
+}
+.dia.boss {
+  border-color: rgba(255, 200, 140, 0.7);
+}
+.dia.fell {
+  border-color: var(--bad);
+}
+.letter-badge {
+  transform: none;
+  border-radius: 10px 3px 10px 3px;
+  border: 0;
+  background: var(--leaf-a);
+}
+.letter-badge b {
+  transform: none;
+  font-family: var(--caps);
+  color: var(--leaf-ink);
+}
+.pip {
+  transform: none;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+.pip.on {
+  background: #ffe08a;
+  border-color: #fff4d0;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  background: linear-gradient(180deg, rgba(6, 18, 26, 0.9), rgba(6, 18, 26, 0.6) 70%, rgba(6, 18, 26, 0));
+}
+.topbar .brand {
+  font-family: var(--caps);
+  letter-spacing: 0;
+  font-size: 17px;
+}
+
+/* ---------- Title ---------- */
+.title-words .cap {
+  letter-spacing: 0.18em;
+  color: var(--leaf-a);
+  font-weight: 700;
+}
+.title-words h1 {
+  font-family: var(--caps);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(38px, 12vw, 52px);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+}
+.title-foot b {
+  font-style: normal;
+  font-weight: 700;
+  color: #ffe2a0;
+}
+
+/* ---------- Sheets ---------- */
+.sheet-back {
+  background: rgba(4, 10, 14, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.sheet.box {
+  border-radius: 28px 28px 0 0;
+  background: rgba(14, 26, 28, 0.72);
+}
+.sheet-head h2 {
+  font-family: var(--caps);
+  letter-spacing: -0.01em;
+  font-size: 26px;
+}
+.rules h3,
+.setting b {
+  font-family: var(--caps);
+  letter-spacing: 0;
+  font-size: 16px;
+}
+.rules p,
+.fine p,
+.setting small {
+  font-style: normal;
+  color: var(--muted);
+}
+.fine {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+.fine summary {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--leaf-a);
+}
+.setting {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.switch i {
+  border-radius: 999px;
+  border: 1px solid var(--glass-edge);
+  background: rgba(255, 255, 255, 0.12);
+}
+.switch i::after {
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+}
+.switch input:checked + i {
+  background: var(--leaf-b);
+  border-color: var(--leaf-a);
+}
+.switch input:checked + i::after {
+  left: 25px;
+  background: #fff;
+  box-shadow: none;
+}
+
+/* ---------- The walk ---------- */
+.walk-scene .fade,
+.title-hero .fade,
+.home-hero .fade {
+  background: linear-gradient(180deg, rgba(6, 18, 26, 0), var(--night) 90%);
+}
+.glade-row {
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+}
+.glade-row .cap {
+  text-shadow: none;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  color: var(--soft);
+}
+.glade-row .num {
+  font-size: 14px;
+}
+.glade-row .dia {
+  width: 26px;
+  height: 26px;
+}
+
+/* The status bar floats as a glass dock. */
+.status.bar {
+  margin-left: 14px;
+  margin-right: 14px;
+  padding: 0 14px 0 5px;
+  height: 52px;
+}
+.me-btn .dia {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+}
+.status .gold .num {
+  font-size: 18px;
+}
+.meter-bar {
+  height: 6px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: visible;
+  position: relative;
+}
+.meter-fill {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--leaf-b), var(--leaf-a));
+  box-shadow: 0 0 6px var(--leaf-glow);
+}
+.meter.low .meter-fill {
+  background: linear-gradient(90deg, #ff6a4a, #ffb347);
+  box-shadow: 0 0 8px rgba(255, 120, 80, 0.6);
+}
+.meter .secs {
+  font-family: var(--nums);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* Name plates, speech and toasts: glass pills. */
+.plate .ttl {
+  display: inline-block;
+  padding: 2px 11px;
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  font-size: 14px;
+  text-shadow: none;
+}
+.say {
+  border-radius: 18px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14.5px;
+  color: #17262a;
+}
+.say::after {
+  border-radius: 2px;
+}
+.toast-line {
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border: 1px solid var(--glass-edge);
+  font-size: 14px;
+}
+.toast-line.good {
+  border-color: rgba(168, 227, 143, 0.5);
+}
+
+/* The question card. */
+.qbox {
+  padding: 14px 18px 14px;
+  border-radius: 24px;
+}
+.qbox .q {
+  font-family: var(--caps);
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.qbox .q.typing::after {
+  color: var(--leaf-a);
+}
+.sealed s {
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--dim);
+}
+
+/* The answer bar: a light pill with a round go button. */
+.bar.answer {
+  height: 54px;
+  padding: 0 5px 0 20px;
+  border-radius: 999px;
+  background: rgba(250, 250, 246, 0.94);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+.answer .hand {
+  display: none;
+}
+.answer input {
+  font-size: 18px;
+  color: #13221f;
+  caret-color: var(--leaf-b);
+}
+.answer input::placeholder {
+  color: #8a9794;
+  font-style: normal;
+}
+.answer .enter {
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--leaf-a), var(--leaf-b));
+  box-shadow: inset 0 -3px 0 var(--leaf-lip);
+  color: var(--leaf-ink);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.tiers-key {
+  font-style: normal;
+  color: var(--muted);
+}
+
+/* The fork: two glass cards, and the one you pick grows a leaf cut. */
+.path-hit.on {
+  background: radial-gradient(closest-side, rgba(200, 255, 170, 0.16), rgba(200, 255, 170, 0));
+  box-shadow: 0 0 22px 4px rgba(168, 227, 143, 0.3);
+}
+.choice {
+  border-radius: 22px;
+}
+.choice.on {
+  border-radius: var(--leafcut);
+  border-color: var(--leaf-a);
+  background: rgba(40, 70, 44, 0.55);
+  box-shadow: 0 0 0 1px var(--leaf-a), 0 0 22px var(--leaf-glow);
+}
+.choice.on .cap {
+  color: var(--leaf-a);
+}
+.choice .heard {
+  font-style: normal;
+}
+.hint-row {
+  font-style: normal;
+  color: var(--mint-ink);
+}
+
+/* The result. */
+.result .ttl {
+  font-size: 21px;
+}
+.ladder .r {
+  border-radius: 12px;
+  color: var(--soft);
+}
+.ladder .r.me {
+  border-radius: 16px 5px 16px 5px;
+  background: rgba(168, 227, 143, 0.22);
+  box-shadow: none;
+  color: #fff;
+}
+.relic-card {
+  border-radius: 22px;
+}
+.relic-card.on {
+  border-radius: var(--leafcut);
+  border-color: var(--leaf-a);
+  box-shadow: 0 0 22px var(--leaf-glow);
+}
+.relic-hit.on {
+  border-color: var(--leaf-a);
+}
+
+/* ---------- Home, ledger and pages ---------- */
+.said span,
+.filters button {
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.filters button[aria-pressed="true"] {
+  border-color: var(--leaf-a);
+  background: rgba(168, 227, 143, 0.18);
+}
+.funnel-row .bar {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.funnel-row .bar i {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--leaf-b), var(--leaf-a));
+}
+.histo span {
+  border-radius: 3px 3px 0 0;
+  background: rgba(168, 227, 143, 0.4);
+}
+.share-text {
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.walk-card {
+  border-radius: 18px;
+}
+.walk-card.today,
+.hero-card.on {
+  border-color: var(--leaf-a);
+}
+.hero-card.on {
+  border-radius: var(--leafcut);
+  box-shadow: 0 0 20px var(--leaf-glow);
+}
+.admin select {
+  border-radius: 10px;
+}
+#toast {
+  border-radius: 999px;
+  background: rgba(14, 26, 28, 0.86);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  border-color: var(--glass-edge);
+}
+.section-head::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Canopy reads upright: Fraunces and Inter carry the emphasis that italics used to. */
+.ladder .pct,
+.ladder .r.hidden span:not(.pct),
+.score-pop,
+.next-walk b,
+.glade-card .note,
+.loot summary,
+.wiki-note,
+.me-stat b,
+.big-stat b,
+.funnel-row .n,
+.small-note,
+.week-head span,
+.walk-card .no,
+.purse-line b {
+  font-style: normal;
+}
+.ladder .pct {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 13px;
+}
+.score-pop {
+  font-weight: 800;
+}
+
+/* ---------- Wide screens: the panel beside the forest is glass too ---------- */
+.wide .walk-ui::before {
+  background: linear-gradient(90deg, rgba(6, 18, 26, 0), rgba(6, 18, 26, 0.35) 30%, rgba(6, 18, 26, 0.6));
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .box,
+  .bar,
+  .glade-row,
+  .toast-line,
+  .plate .ttl {
+    background: rgba(14, 26, 28, 0.94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.glade-row:empty {
+  display: none;
+}
+
+/* Headings in Fraunces sit tight; small labels in Inter. */
+.admin > h1,
+.admin-box h2,
+.bloom-word,
+.loot-row b,
+.page-head h1,
+.section-head h2,
+.week-head {
+  letter-spacing: -0.01em;
+}
+.filters button,
+.me-stat span {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* The fork's cards and badges, in Canopy. */
+.path-card.box {
+  border-radius: 20px;
+  background: rgba(14, 26, 28, 0.58);
+}
+.path-card.on {
+  border-radius: var(--leafcut);
+  border-color: var(--leaf-a);
+  box-shadow: 0 0 0 1px var(--leaf-a), 0 0 22px var(--leaf-glow), 0 12px 26px rgba(0, 0, 0, 0.3);
+}
+.path-card.on .cap {
+  color: var(--leaf-a);
+}
+.path-card .heard {
+  font-style: normal;
+}
