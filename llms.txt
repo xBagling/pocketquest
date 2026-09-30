@@ -1,0 +1,9 @@
+# Pocket Quest
+
+> A free, cozy daily quiz walk through a magical pixel-art wood, played in the browser. Everyone gets the same walk each day.
+
+Every creature on the path asks you to name something (a country in Africa, a Greek god, a Pixar film), and the rarer your correct answer, the more gold it's worth: Copper for common answers, then Silver, Gold, Gem and the Crown Jewel. A walk is six glades long; at each fork you choose one of two paths, each with its own creature, category and rule. Wrong guesses are free; only letting the lantern (the timer) burn out costs a heart, and you have three. After glade two you pick one charm. At the end, Old Ember the dragon guards her hoard.
+
+- [Play Pocket Quest](https://xbagling.github.io/pocketquest/): today's walk, no sign-up, free.
+- Share your result as a short text line, like Wordle.
+- Works on phones and desktops, and offline once it has loaded.

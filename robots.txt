@@ -1,0 +1,5 @@
+# Pocket Quest: a cozy daily quiz walk.
+User-agent: *
+Allow: /
+
+Sitemap: https://xbagling.github.io/pocketquest/sitemap.xml
